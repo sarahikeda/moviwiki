@@ -1,12 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Search from './Search/index.js';
 
 import '../assets/styles/App.scss';
 
 
-const App = ({ name }) => {
+const App = () => {
   return (
-    <h1>Hello, {name}!</h1>
+    <div className="app">
+      <h1>Go on, enter a movie!</h1>
+      <Search />
+    </div>
   );
 };
 

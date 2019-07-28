@@ -6,9 +6,21 @@ module.exports = {
     './src/index'
   ],
   module: {
+
     loaders: [
       { test: /\.js?$/, loader: 'babel-loader', exclude: /node_modules/ },
       { test: /\.s?css$/, loader: 'style-loader!css-loader!sass-loader' },
+      {
+        test: /\.(png|jpg|gif)$/i,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
+            },
+          },
+        ],
+      }
     ]
   },
   resolve: {

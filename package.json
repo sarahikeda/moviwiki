@@ -21,6 +21,7 @@
     "enzyme": "^2.8.1",
     "expect": "^1.20.2",
     "express": "^4.15.2",
+    "file-loader": "^4.1.0",
     "mocha": "^3.2.0",
     "node-sass": "^4.5.2",
     "prop-types": "^15.5.8",
@@ -40,6 +41,7 @@
     "ignore-styles": "^5.0.1",
     "react-addons-test-utils": "^15.5.1",
     "react-test-renderer": "^15.5.4",
+    "url-loader": "^2.1.0",
     "webpack-dev-middleware": "^1.10.1",
     "webpack-dev-server": "^2.4.2",
     "webpack-hot-middleware": "^2.18.0"
