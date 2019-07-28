@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import SearchImage from '../../assets/images/search-icon.jpg';
+import SearchBar from '../SearchBar/index.js';
 
 import './index.scss';
 
@@ -11,7 +12,6 @@ class Search extends React.Component {
   }
 
   handleClick = () => {
-    console.log('hi');
     this.setState({
       isToggleOn: !this.state.isToggleOn
     });
@@ -21,7 +21,8 @@ class Search extends React.Component {
     const isToggleOn = this.state.isToggleOn;
     return (
       <div>
-        {isToggleOn ? 'hi'
+        {isToggleOn ?
+          <SearchBar />
           : (
             <img
               alt="magnifying-glass"
