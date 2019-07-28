@@ -15,26 +15,30 @@ class SearchBar extends React.Component {
     });
   }
 
-  searchMovie = () => {
-    console.log(this.state.searchQuery)
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.props.performSearch(this.state.searchQuery);
   }
 
   render() {
     return (
-      <div className="search-bar">
+      <form
+        className="search-bar"
+        onSubmit={this.handleSubmit}
+      >
         <input
           className="searchTerm"
           onChange={this.handleChange}
           placeholder="Movie Title"
           type="text"
+          value={this.state.searchQuery}
         />
 
         <input
-          onClick={this.searchMovie}
           type="submit"
           value="Submit"
         />
-      </div>
+      </form>
     );
   }
 };

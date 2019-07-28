@@ -8,7 +8,7 @@ import '../assets/styles/App.scss';
 const App = () => {
   return (
     <div className="app">
-      <h1>Go on, enter a movie!</h1>
+      <h1>movie</h1>
       <Search />
     </div>
   );
