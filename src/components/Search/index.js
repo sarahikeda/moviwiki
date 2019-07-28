@@ -5,18 +5,32 @@ import SearchImage from '../../assets/images/search-icon.jpg';
 import './index.scss';
 
 class Search extends React.Component {
-  handleClick() {
-    console.log('hi')
+  constructor(props) {
+    super(props);
+    this.state = { isToggleOn: false };
+  }
+
+  handleClick = () => {
+    console.log('hi');
+    this.setState({
+      isToggleOn: !this.state.isToggleOn
+    });
   }
 
   render() {
+    const isToggleOn = this.state.isToggleOn;
     return (
       <div>
-        <img
-          className="search-icon"
-          onClick={this.handleClick}
-          src={SearchImage}
-          alt="magnifying-glass"/>
+        {isToggleOn ? 'hi'
+          : (
+            <img
+              alt="magnifying-glass"
+              className="search-icon"
+              onClick={this.handleClick}
+              src={SearchImage}
+            />
+          )
+        }
       </div>
     );
   }
