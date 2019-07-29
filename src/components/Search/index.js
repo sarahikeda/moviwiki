@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import SearchImage from '../../assets/images/search-icon.jpg';
 import SearchBar from '../SearchBar/index.js';
 import Results from '../Results/index.js';
@@ -24,7 +23,6 @@ class Search extends React.Component {
   }
 
   performSearch = (query) => {
-    console.log(query, 'query')
     fetch("http://www.omdbapi.com/?apikey=55662455&t=" + query)
       .then(res => res.json())
       .then(

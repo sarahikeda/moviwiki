@@ -1,7 +1,14 @@
 .movie-result {
-  margin: 100px 200px;
+  margin: 100px 200px 20px 200px;
   border: 1px solid black;
   padding: 20px;
+}
+
+.favorite-star {
+  width: 50px;
+}
+
+.favorite-star:hover {
 }
 
 .movie-info {
