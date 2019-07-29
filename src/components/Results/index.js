@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Favorite from '../../assets/images/search-icon.jpg';
+import Star from '../Star/index.js';
 import Feedback from '../Feedback/index.js';
-import Star from '../../assets/images/star.svg';
 
 import './index.scss';
 
@@ -10,9 +9,18 @@ class Results extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isToggleOn: false
+      isToggleOn: false,
+      isStarFilled: false
     };
   }
+
+  handleHover = () => {
+    console.log('hova');
+    this.setState({
+      isStarFilled: !this.state.isStarFilled,
+    });
+  }
+
   formatResults = () => {
     const movie = this.props.movieResults;
     // if there is no poster, put a placeholder
@@ -26,15 +34,9 @@ class Results extends React.Component {
           />
           <div>
             <p className="title">{movie.Title}, {movie.Year}</p>
-            <img
-              alt="favorite-star"
-              className="favorite-star"
-              onClick={this.handleClick}
-              src={Favorite}
-            />
-            <object data={Star} type="image/svg+xml">
-              <img src="yourfallback.jpg" />
-            </object>
+
+            <Star />
+
             <p className="plot">{movie.Plot}</p>
           </div>
         </div>
@@ -75,7 +77,7 @@ class Results extends React.Component {
 Results.propTypes = {
   error: PropTypes.string,
   isLoaded: PropTypes.bool,
-  movieResults: PropTypes.object,
+  movieResults: PropTypes.obj,
 };
 
 export default Results;
