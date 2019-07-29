@@ -1,0 +1,18 @@
+.movie-result {
+  margin: 100px 200px;
+  border: 1px solid black;
+  padding: 20px;
+}
+
+.movie-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.title {
+  font-size: 2em;
+}
+
+.plot {
+  margin: 20px;
+}

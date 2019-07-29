@@ -1,29 +1,50 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class Results extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+import './index.scss';
 
+class Results extends React.Component {
   formatResults = () => {
-    console.log('props', this.props.movieResults.Title)
+    const movie = this.props.movieResults;
+    // if there is no poster, put a placeholder
     return (
-      <div>
-        <div> {this.props.movieResults.Title}</div> - {this.props.movieResults.Year}
-        <p>{this.props.movieResults.Plot}</p>
+      <div className="movie-result">
+        <div className="movie-info">
+          <img
+            alt="movie-poster"
+            className="movie-poster"
+            src={movie.Poster}
+          />
+          <p className="title">{movie.Title}</p> <span>{movie.Year}</span>
+        </div>
+        <p className="plot"> {movie.Plot}</p>
       </div>
-    )
+    );
   }
 
 
   render() {
+    let result;
     if (this.props.error) {
-      return <div>Oops, we've had a hiccup. {this.props.error}</div>;
-    } else {
-      return this.formatResults();
+      result = (
+        <div>
+          Oops, we've had a hiccup. {this.props.error}
+        </div>
+      );
+    } else if (this.props.movieResults && this.props.isLoaded) {
+      result = this.formatResults();
     }
+
+    return (
+      <div>{result}</div>
+    );
   }
+};
+
+Results.propTypes = {
+  error: PropTypes.string,
+  isLoaded: PropTypes.boolean,
+  movieResults: PropTypes.array,
 };
 
 export default Results;

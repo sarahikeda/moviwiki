@@ -11,6 +11,7 @@ class Search extends React.Component {
     super(props);
     this.state = {
       error: null,
+      isLoaded: false,
       isToggleOn: false,
       movieResults: [],
     };
@@ -30,6 +31,7 @@ class Search extends React.Component {
         (result) => {
           if (result.Response === 'True') {
             this.setState({
+              isLoaded: true,
               movieResults: result
             });
           } else {
@@ -61,15 +63,12 @@ class Search extends React.Component {
 
         <Results
           error={this.state.error}
+          isLoaded={this.state.isLoaded}
           movieResults={this.state.movieResults}
         />
       </div>
     );
   }
-};
-
-Search.propTypes = {
-  name: PropTypes.string,
 };
 
 export default Search;
