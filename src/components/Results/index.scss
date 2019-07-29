@@ -1,7 +1,11 @@
 .movie-result {
-  margin: 100px 200px 20px 200px;
+  margin: 20px 200px 20px 200px;
   border: 1px solid black;
   padding: 20px;
+
+  .movie-poster {
+    width: 150px;
+  }
 }
 
 .favorite-star {
@@ -17,9 +21,10 @@
 }
 
 .title {
-  font-size: 2em;
+  font-size: 1.2em;
 }
 
 .plot {
   margin: 20px;
+  font-size: .8em;
 }

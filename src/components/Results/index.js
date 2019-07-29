@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Favorite from '../../assets/images/search-icon.jpg';
 import Feedback from '../Feedback/index.js';
+import Star from '../../assets/images/star.svg';
 
 import './index.scss';
 
@@ -23,15 +24,20 @@ class Results extends React.Component {
             className="movie-poster"
             src={movie.Poster}
           />
-          <p className="title">{movie.Title}</p> <span>{movie.Year}</span>
-          <img
-            alt="favorite-star"
-            className="favorite-star"
-            onClick={this.handleClick}
-            src={Favorite}
-          />
+          <div>
+            <p className="title">{movie.Title}, {movie.Year}</p>
+            <img
+              alt="favorite-star"
+              className="favorite-star"
+              onClick={this.handleClick}
+              src={Favorite}
+            />
+            <object data={Star} type="image/svg+xml">
+              <img src="yourfallback.jpg" />
+            </object>
+            <p className="plot">{movie.Plot}</p>
+          </div>
         </div>
-        <p className="plot"> {movie.Plot}</p>
       </div>
     );
   }
@@ -68,8 +74,8 @@ class Results extends React.Component {
 
 Results.propTypes = {
   error: PropTypes.string,
-  isLoaded: PropTypes.func,
-  movieResults: PropTypes.array,
+  isLoaded: PropTypes.bool,
+  movieResults: PropTypes.object,
 };
 
 export default Results;

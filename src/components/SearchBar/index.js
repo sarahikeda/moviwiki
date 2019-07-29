@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import './index.scss';
+
 class SearchBar extends React.Component {
   constructor(props) {
     super(props);
@@ -27,16 +29,16 @@ class SearchBar extends React.Component {
         onSubmit={this.handleSubmit}
       >
         <input
-          className="searchTerm"
+          className="search-query"
           onChange={this.handleChange}
-          placeholder="Movie Title"
+          placeholder="movie title"
           type="text"
           value={this.state.searchQuery}
         />
 
         <input
           type="submit"
-          value="Submit"
+          value="Search"
         />
       </form>
     );

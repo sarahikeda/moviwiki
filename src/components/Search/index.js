@@ -36,7 +36,6 @@ class Search extends React.Component {
             this.setState({
               error: result.Error
             });
-
           }
         }
       );
