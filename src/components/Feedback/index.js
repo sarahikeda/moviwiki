@@ -17,8 +17,45 @@ class Feedback extends React.Component {
     });
   }
 
+  handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(this.state)
+    // save review and comment to database
+    // make sure that movie info is associated (what info needs to be saved)
+    //validation check
+    // console.log(this.state, 'status');
+
+    // fetch("http://www.omdbapi.com/?apikey=55662455&t=", {
+    //   method: "POST",
+    //   headers: {
+    //     'Accept': 'application/json',
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify({
+    //     comment: this.state.comment,
+    //     rating: this.state.rating,
+    //   })
+    // })
+    //   .then(res => res.json())
+    //   .then(
+    //     (result) => {
+    //       if (result.Response === 'True') {
+    //         this.setState({
+    //           isLoaded: true,
+    //           movieResults: result
+    //         });
+    //       } else {
+    //         this.setState({
+    //           error: result.Error
+    //         });
+    //       }
+    //     }
+    //   );
+
+  }
+
   selectRating = (rating) => {
-    console.log(event, 'rating');
+    console.log(rating, 'rating');
     this.setState({
       rating: rating
     });

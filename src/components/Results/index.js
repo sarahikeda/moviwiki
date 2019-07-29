@@ -42,7 +42,6 @@ class Results extends React.Component {
     this.setState({
       isToggleOn: !this.state.isToggleOn
     });
-    // if state is toggled/favorited, show comment and rating and change star to filled in
   }
 
 
