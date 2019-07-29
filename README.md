@@ -1,95 +1,44 @@
-# React + Sinatra Starter
-_for [Heroku](https://www.heroku.com/) deployment_
+*moviwiki* is a search tool to end disputes amongst movie buffs. Have a question about when 'Rocky' came out? Use *moviwiki* to search the title and then voila, a slew of trivia facts will appear.
 
-## OVERVIEW
-This is a simple starter to get you up and running with React & Sinatra. This is intended to provide:
+How to use:
+    - Click the search icon to begin!
+    - Enter movie title
+    - Favorite movie if it's truly, one of your favorites.
+    - If favorited, add comment and rate the movie.
 
-* a lightweight Webpack config (for development and production)
-* some helpful tooling for development workflow
-* Heroku-ready deployment setup
+Tables:
+    - User
+        - First Name
+        - Last Name
+        - Email
+        - Username
+        - Password
+    - Movie
+        - Poster
+        - Title
+        - Year
+        - Plot
+    - Reviews (joint table between user, rating, and comment)
+        - User Id
+        - Movie Id
+        - Rating Id
+        - Comment Id
+    - Rating
+        - Review Id
+        - Rating Value
 
-#### WHY REACT + SINATRA?
-This starter has been a surprisingly valuable tool. Sinatra provides a really simple web framework for serving our React frontend. You can quickly add some API endpoints (and/or GraphQL) and connect ActiveRecord. We get all the benefits of using Ruby's simple syntax and predicability, and React's powerful rendering.
+    - Comment
+        - Review Id
+        - Content
 
-## UP & RUNNING
-* Clone the repo
-* Install Ruby dependencies: `$ bundle install`
-* Install JS dependencies: `$ npm install` _or_ `$ yarn`
-* Fire up a dev server: `$ npm run dev` _or_ `$ yarn dev`
-* Visit `http://localhost:8080` in your browser
-
-#### WHATS HAPPENING?
-When you run `npm run dev`, webpack is transpiling all your JS and CSS into a ghost file, `lib/app/public/bundle.js`. It then serves up the HTML file, `lib/app/views/index.html` on a ghost Express server on port 8080.
-
-#### BUT WAIT, WE'RE NOT USING A SINATRA SERVER?
-That's correct. To use the Puma server for Sinatra with the transpiled assets, take a look at the [Production Build section](#production-build)
-
-## LINTING
-To run the linter once:
-```
-$ npm run lint
-// or
-$ yarn lint
-```
-
-To run the watch task:
-```
-$ npm run lint:watch
-// or
-$ yarn lint:watch
-```
-
-## TESTING
-To run the tests:
-```
-$ npm test
-// or
-$ yarn test
-```
-
-## PRODUCTION BUILD
-
-- run `$ npm run build` _or_ `$ yarn build`
-- run `ruby lib/app.rb` (We're using Puma by default)
-
-This creates a transpiled asset file (`bundle.js`) of your JS and CSS in the `lib/app/public/` directory. This is great for production, but not so hot for development workflow as you would need to transpile _every time_ you made a change to the JS.
-
-## DEPLOYING TO HEROKU
-This app is set up for deployment to Heroku!
-
-_This assumes you have already have a Heroku account and have the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli) installed_
-
-🚨 _Be sure to run the build script before deploying._ 🚨
-
-```
-$ heroku login
-$ heroku create -a name-of-your-app
-$ git push heroku master
-$ heroku open
-```
-
-If you're unfamiliar with Heroku deployment (or just need a refresher), they have a really great walkthrough [here](https://devcenter.heroku.com/articles/getting-started-with-nodejs#introduction).
+To retrieve a list of user's favorite movies, one would return a list of reviews from the specified user and use the movie id to get the movie's info.
 
 
-## CHANGELOG
-
-### v1.0.0
-This app has been updated to use React v15.5 and Webpack 2.3! 🎉
-
-**Major Changes:**
-
-* Updates React and ReactDOM to v15.5
-* Updates Webpack to v2.3
-* Enables hot-reloading for local development
-* Adds initial test suite with Enzyme, Expect, and Mocha
-
-**Minor Changes:**
-
-* Updates all other dependencies to latest
-* Updates eslint rules
-* Updates npm scripts
-* Adds yarn.lock
-* Updates README
-
-### v0.1.0
-Initial release. Basic setup for a React + Sinatra integration
+To Dos:
+    - First check if movie title is already saved in database. If so, populate the search result (as well as the comment and review) from there, rather than calling the Omdb API.
+    - Post information to DB.
+    - Retrieve information from DB, not just from omdb.
+    - Return to home page after review is submitted.
+    - Have info validation
+        - check comment and rating are both filled out
+    - User login capabilities with password
