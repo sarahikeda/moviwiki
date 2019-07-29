@@ -14,13 +14,6 @@ class Results extends React.Component {
     };
   }
 
-  handleHover = () => {
-    console.log('hova');
-    this.setState({
-      isStarFilled: !this.state.isStarFilled,
-    });
-  }
-
   formatResults = () => {
     const movie = this.props.movieResults;
     // if there is no poster, put a placeholder
@@ -35,7 +28,7 @@ class Results extends React.Component {
           <div>
             <p className="title">{movie.Title}, {movie.Year}</p>
 
-            <Star />
+            <Star toggleComments={this.handleClick} />
 
             <p className="plot">{movie.Plot}</p>
           </div>
@@ -64,7 +57,6 @@ class Results extends React.Component {
     } else if (this.props.movieResults && this.props.isLoaded) {
       result = this.formatResults();
     }
-    // add in favorite icon
     return (
       <div className="result">
         {result}

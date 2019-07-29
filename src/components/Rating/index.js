@@ -1,8 +1,12 @@
 import React from 'react';
 import './index.scss';
-import Favorite from '../../assets/images/search-icon.jpg';
+import Star from '../../assets/images/star.svg';
 
 class Rating extends React.Component {
+// could reuse the star component?
+  handleClick = (e) => {
+    this.props.handleClick(e.target.id);
+  }
 
   render() {
     return (
@@ -11,32 +15,37 @@ class Rating extends React.Component {
         <img
           alt="favorite-star"
           className="favorite-star"
-          onClick={this.props.handleClick("1")}
-          src={Favorite}
+          id="1"
+          onClick={this.handleClick}
+          src={Star}
         />
         <img
           alt="favorite-star"
           className="favorite-star"
-          onClick={this.props.handleClick("2")}
-          src={Favorite}
-        />
-        <img
-          alt="favorite-star"
-          className="favorite-star"
-          onClick={this.props.handleClick("3")}
-          src={Favorite}
-        />
-        <img
-          alt="favorite-star"
-          className="favorite-star"
-          onClick={this.props.handleClick("4")}
-          src={Favorite}
-        />
-        <img
-          alt="favorite-star"
-          className="favorite-star"
+          id="2"
           onClick={this.props.handleClick}
-          src={Favorite}
+          src={Star}
+        />
+        <img
+          alt="favorite-star"
+          className="favorite-star"
+          id="3"
+          onClick={this.props.handleClick}
+          src={Star}
+        />
+        <img
+          alt="favorite-star"
+          className="favorite-star"
+          id="4"
+          onClick={this.props.handleClick}
+          src={Star}
+        />
+        <img
+          alt="favorite-star"
+          className="favorite-star"
+          id="5"
+          onClick={this.props.handleClick}
+          src={Star}
         />
       </div>
     );

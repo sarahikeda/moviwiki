@@ -1,6 +1,6 @@
 import React from 'react';
-import FilledStar from '../../assets/images/filled-star.svg';
-import EmptyStar from '../../assets/images/star.svg';
+import PropTypes from 'prop-types';
+
 
 class Star extends React.Component {
   constructor(props) {
@@ -27,6 +27,7 @@ class Star extends React.Component {
       <img
         alt="star icon"
         className="favorite-star"
+        onClick={this.props.toggleComments}
         onMouseLeave={this.handleMouseLeave}
         onMouseOver={this.handleMouseOver}
         src={this.state.starImg}
@@ -34,6 +35,10 @@ class Star extends React.Component {
     );
 
   }
+};
+
+Star.propTypes = {
+  toggleComments: PropTypes.func,
 };
 
 export default Star;
