@@ -1,8 +1,11 @@
 **moviwiki** is a search tool to end disputes amongst movie buffs. Have a question about when 'Rocky' came out? Use **moviwiki** to search the title and then voila, a slew of trivia facts will appear.
+<<<<<<< HEAD
 
 To start:
 
 * Git clone *https://github.com/sarahikeda/moviwiki.git* (this repo)
+=======
+>>>>>>> 111ab5b82c97ca6571c7f239a997d45ce6cb0392
 
 How to use:
 
@@ -19,19 +22,31 @@ Tables:
         - Email
         - Username
         - Password
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> 111ab5b82c97ca6571c7f239a997d45ce6cb0392
     - Movie
         - Poster
         - Title
         - Year
         - Plot
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> 111ab5b82c97ca6571c7f239a997d45ce6cb0392
     - Reviews (joint table between user, rating, and comment)
         - User Id
         - Movie Id
         - Rating Id
         - Comment Id
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> 111ab5b82c97ca6571c7f239a997d45ce6cb0392
     - Rating
         - Review Id
         - Rating Value
