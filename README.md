@@ -13,16 +13,19 @@ Tables:
         - Email
         - Username
         - Password
+        
     - Movie
         - Poster
         - Title
         - Year
         - Plot
+        
     - Reviews (joint table between user, rating, and comment)
         - User Id
         - Movie Id
         - Rating Id
         - Comment Id
+        
     - Rating
         - Review Id
         - Rating Value
