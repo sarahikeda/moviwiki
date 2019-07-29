@@ -1,12 +1,14 @@
-*moviwiki* is a search tool to end disputes amongst movie buffs. Have a question about when 'Rocky' came out? Use *moviwiki* to search the title and then voila, a slew of trivia facts will appear.
+**moviwiki** is a search tool to end disputes amongst movie buffs. Have a question about when 'Rocky' came out? Use **moviwiki** to search the title and then voila, a slew of trivia facts will appear.
 
 How to use:
-    - Click the search icon to begin!
-    - Enter movie title
-    - Favorite movie if it's truly, one of your favorites.
-    - If favorited, add comment and rate the movie.
+
+    * Click the search icon to begin!
+    * Enter movie title
+    * Favorite movie if it's truly, one of your favorites.
+    * If favorited, add comment and rate the movie.
 
 Tables:
+
     - User
         - First Name
         - Last Name
