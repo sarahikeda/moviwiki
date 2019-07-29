@@ -34,9 +34,6 @@ class Results extends React.Component {
               {movie.Title}, {movie.Year}
               <Star toggleComments={this.handleClick} />
             </p>
-
-
-
             <p className="plot">{movie.Plot}</p>
           </div>
         </div>
@@ -61,7 +58,8 @@ class Results extends React.Component {
 
   submitReview = (reviewData) => {
     // post rating, comment, and movie info
-    // console.log('handle review', reviewData)
+    console.log('handle review', reviewData)
+
     this.extractMovieInfo();
     console.log('movie data', this.state)
   }

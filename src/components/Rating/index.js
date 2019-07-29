@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import './index.scss';
 import Star from '../../assets/images/star.svg';
 
@@ -8,48 +10,28 @@ class Rating extends React.Component {
     this.props.handleClick(e.target.id);
   }
 
-  render() {
-    return (
-      // can refactor to map these out with each index indicating the rating, rather than hardcoding 5 stars
-      <div className="rating">
-        <img
-          alt="favorite-star"
-          className="favorite-star"
-          id="1"
-          onClick={this.handleClick}
-          src={Star}
-        />
-        <img
-          alt="favorite-star"
-          className="favorite-star"
-          id="2"
-          onClick={this.handleClick}
-          src={Star}
-        />
-        <img
-          alt="favorite-star"
-          className="favorite-star"
-          id="3"
-          onClick={this.handleClick}
-          src={Star}
-        />
-        <img
-          alt="favorite-star"
-          className="favorite-star"
-          id="4"
-          onClick={this.handleClick}
-          src={Star}
-        />
-        <img
-          alt="favorite-star"
-          className="favorite-star"
-          id="5"
-          onClick={this.handleClick}
-          src={Star}
-        />
-      </div>
-    );
+  formatStars = () => {
+    // iterate 5 times
+    return Array.from([1,2,3,4,5]).map((star, index) => (
+      <img
+        alt="favorite-star"
+        className="favorite-star"
+        id={index}
+        key={index}
+        onClick={this.handleClick}
+        src={Star}
+      />
+    ));
   }
+
+  render() {
+    const formatStars = this.formatStars();
+    return <div>{formatStars}</div>;
+  }
+};
+
+Rating.propTypes = {
+  handleClick: PropTypes.func,
 };
 
 export default Rating;

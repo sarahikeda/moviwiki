@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-
 class Star extends React.Component {
   constructor(props) {
     super(props);
@@ -22,12 +21,19 @@ class Star extends React.Component {
     });
   }
 
+  handleClick = () => {
+    this.setState({
+      starImg: require('../../assets/images/filled-star.svg'),
+    });
+    this.props.toggleComments();
+  }
+
   render() {
     return (
       <img
         alt="star icon"
         className="favorite-star"
-        onClick={this.props.toggleComments}
+        onClick={this.handleClick}
         onMouseLeave={this.handleMouseLeave}
         onMouseOver={this.handleMouseOver}
         src={this.state.starImg}
