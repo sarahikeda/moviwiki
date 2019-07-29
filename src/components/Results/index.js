@@ -10,7 +10,11 @@ class Results extends React.Component {
     super(props);
     this.state = {
       isToggleOn: false,
-      isStarFilled: false
+      isStarFilled: false,
+      movieTitle: '',
+      moviePoster: '',
+      movieYear: '',
+      moviePlot: '',
     };
   }
 
@@ -26,9 +30,12 @@ class Results extends React.Component {
             src={movie.Poster}
           />
           <div>
-            <p className="title">{movie.Title}, {movie.Year}</p>
+            <p className="title">
+              {movie.Title}, {movie.Year}
+              <Star toggleComments={this.handleClick} />
+            </p>
 
-            <Star toggleComments={this.handleClick} />
+
 
             <p className="plot">{movie.Plot}</p>
           </div>
@@ -38,10 +45,25 @@ class Results extends React.Component {
   }
 
   handleClick = () => {
-    console.log('like favorite');
     this.setState({
       isToggleOn: !this.state.isToggleOn
     });
+  }
+
+  extractMovieInfo = () => {
+    this.setState({
+      movieTitle: this.props.movieResults.Title,
+      moviePoster: this.props.movieResults.Poster,
+      movieYear: this.props.movieResults.Year,
+      moviePlot: this.props.movieResults.Plot
+    }, () => console.log(this.state, 'sttt'));
+  }
+
+  submitReview = (reviewData) => {
+    // post rating, comment, and movie info
+    // console.log('handle review', reviewData)
+    this.extractMovieInfo();
+    console.log('movie data', this.state)
   }
 
 
@@ -59,7 +81,7 @@ class Results extends React.Component {
     return (
       <div className="result">
         {result}
-        {this.state.isToggleOn && <Feedback />}
+        {this.state.isToggleOn && <Feedback submitReview={this.submitReview} />}
       </div>
     );
   }

@@ -5,7 +5,6 @@ import Star from '../../assets/images/star.svg';
 class Rating extends React.Component {
 // could reuse the star component?
   handleClick = (e) => {
-    console.log('do you get here')
     this.props.handleClick(e.target.id);
   }
 
