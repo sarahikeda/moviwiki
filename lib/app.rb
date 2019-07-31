@@ -15,14 +15,19 @@ get '/' do
 end
 
 post '/reviews' do
-  # TO DO reorganize this code so it's not in routes and extracted out
-  movie = Movie.create(poster: params[:moviePoster], title: params[:movieTitle], year: params[:movieYear], plot: params[:moviePlot])
+  # TO DO reorganize this code so saving of models is not in routes and extracted out
 
-  comment = Comment.create(content: params[:comment])
+  # validate params, also ensure everything is filled out
+  data = JSON.parse(params.keys.first
+  )
 
-  review = Review.create(rating_id: params[:rating])
+  movie = Movie.create(poster: data[:moviePoster], title: data[:movieTitle], year: data[:movieYear], plot: data[:moviePlot])
 
-  if movie && comment && review
+  comment = Comment.create(content: data[:comment], movie_id: movie.id)
+
+  rating = Rating.create(rating_value: data[:rating], movie_id: movie.id)
+
+  if movie && comment && rating
     [200, {}, "Success"].to_json
   else
     [400, {}, "Please try response again."].to_json
