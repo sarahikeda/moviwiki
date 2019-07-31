@@ -56,3 +56,7 @@ To Dos:
     * Have info validation
         * check comment and rating are both filled out
     * User login capabilities with password
+    * Add placeholder if poster doesn't exist.
+    * Keep star filled in if selected (the `onClick` event)
+    * Add feedback for when review is submitted
+    * Make app responsive

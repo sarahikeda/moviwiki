@@ -62,6 +62,22 @@ class Results extends React.Component {
 
     this.extractMovieInfo();
     console.log('movie data', this.state)
+
+    $.ajax({
+      url: '/reviews',
+      dataType: 'json',
+      type: 'POST',
+      data: 'hi',
+      success: function (data) {
+        this.setState({ data: data });
+      }.bind(this),
+      error: function (xhr, status, err) {
+        console.log(status);
+        console.log(err);
+        console.error('hi', status, err.toString());
+      }.bind(this)
+    });
+    console.log('we got here', status)
   }
 
 
