@@ -23,6 +23,8 @@ class SearchContainer extends React.Component {
   }
 
   performSearch = (query) => {
+    // TODO implement using ajax
+    // hide api key in env variable
     fetch("http://www.omdbapi.com/?apikey=55662455&t=" + query)
       .then(res => res.json())
       .then(
