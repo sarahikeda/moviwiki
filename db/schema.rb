@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 2019_07_29_220317) do
   create_table "comments", force: :cascade do |t|
     t.integer "review_id"
     t.string "content"
+    t.integer "movie_id"
   end
 
   create_table "movies", force: :cascade do |t|
@@ -29,6 +30,7 @@ ActiveRecord::Schema.define(version: 2019_07_29_220317) do
   create_table "ratings", force: :cascade do |t|
     t.integer "review_id"
     t.string "rating_value"
+    t.integer "movie_id"
   end
 
   create_table "reviews", force: :cascade do |t|

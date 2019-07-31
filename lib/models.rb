@@ -10,7 +10,9 @@ end
 class Rating < ActiveRecord::Base
 end
 
-class Review < ActiveRecord::Base
+class CommentRatings < ActiveRecord::Base
+  belongs_to :rating
+  belongs_to :comment
 end
 
 class User < ActiveRecord::Base
