@@ -26,7 +26,7 @@ class Rating extends React.Component {
 
   render() {
     const formatStars = this.formatStars();
-    return <div class="container">{formatStars}</div>;
+    return <div>{formatStars}</div>;
   }
 };
 

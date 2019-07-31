@@ -43,6 +43,7 @@ class Feedback extends React.Component {
           />
 
           <input
+            className="btn btn-info"
             type="submit"
             value="Submit your review"
           />

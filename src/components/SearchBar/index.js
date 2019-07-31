@@ -37,6 +37,7 @@ class SearchBar extends React.Component {
         />
 
         <input
+          className="btn btn-info"
           type="submit"
           value="Search"
         />

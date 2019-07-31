@@ -13,9 +13,9 @@
     <h1 class="text-center"=>moviwiki</h1>
 
     <h4>Your favorites</h4>
-    <ul>
+    <ul class="list-group">
       <% favorite_movies.each do |movie| %>
-          <li><%= movie.title %></li>
+          <li class="list-group-item"><%= movie.title %></li>
       <% end %>
     </ul>
   </div>
