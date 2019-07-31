@@ -60,24 +60,22 @@ class Results extends React.Component {
 
   submitReview = () => {
     // post rating, comment, and movie info
-
     $.ajax({
       url: '/reviews',
       dataType: 'json',
       type: 'POST',
       data: JSON.stringify(this.state),
-      success: function (data) {
+      success: () => {
         this.setState({
-          data: data,
-          isToggleOn: false ,
+          isToggleOn: false,
         });
       },
-      error: function (xhr, status, err) {
+      error: (xhr, status, err) => {
         console.log(status);
         console.log(err);
+        // TO DO display error to user
       }
     });
-    console.log('we got here', status)
   }
 
 
@@ -93,7 +91,7 @@ class Results extends React.Component {
       result = this.formatResults();
     }
     return (
-      <div className="result">
+      <div className="result container">
         {result}
         {this.state.isToggleOn && <Feedback submitReview={this.extractMovieInfo} />}
       </div>
