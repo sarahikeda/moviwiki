@@ -5,7 +5,7 @@ import Results from '../Results/index.js';
 
 import './index.scss';
 
-class Search extends React.Component {
+class SearchContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -68,4 +68,4 @@ class Search extends React.Component {
   }
 };
 
-export default Search;
+export default SearchContainer;

@@ -20,7 +20,7 @@ class Results extends React.Component {
 
   formatResults = () => {
     const movie = this.props.movieResults;
-    // if there is no poster, put a placeholder
+    // TO DO if there is no poster, put a placeholder
     return (
       <div className="movie-result">
         <div className="movie-info">
@@ -32,7 +32,7 @@ class Results extends React.Component {
           <div>
             <p className="title">
               {movie.Title}, {movie.Year}
-              <Star toggleComments={this.handleClick} />
+              <Star toggleComments={this.toggleComments} />
             </p>
             <p className="plot">{movie.Plot}</p>
           </div>
@@ -41,41 +41,41 @@ class Results extends React.Component {
     );
   }
 
-  handleClick = () => {
+  toggleComments = () => {
     this.setState({
       isToggleOn: !this.state.isToggleOn
     });
   }
 
-  extractMovieInfo = () => {
+  extractMovieInfo = (reviewData) => {
     this.setState({
+      comment: reviewData.comment,
+      rating: reviewData.rating,
       movieTitle: this.props.movieResults.Title,
       moviePoster: this.props.movieResults.Poster,
       movieYear: this.props.movieResults.Year,
       moviePlot: this.props.movieResults.Plot
-    }, () => console.log(this.state, 'sttt'));
+    }, () => this.submitReview());
   }
 
-  submitReview = (reviewData) => {
+  submitReview = () => {
     // post rating, comment, and movie info
-    console.log('handle review', reviewData)
-
-    this.extractMovieInfo();
-    console.log('movie data', this.state)
 
     $.ajax({
       url: '/reviews',
       dataType: 'json',
       type: 'POST',
-      data: 'hi',
+      data: JSON.stringify(this.state),
       success: function (data) {
-        this.setState({ data: data });
-      }.bind(this),
+        this.setState({
+          data: data,
+          isToggleOn: false ,
+        });
+      },
       error: function (xhr, status, err) {
         console.log(status);
         console.log(err);
-        console.error('hi', status, err.toString());
-      }.bind(this)
+      }
     });
     console.log('we got here', status)
   }
@@ -95,7 +95,7 @@ class Results extends React.Component {
     return (
       <div className="result">
         {result}
-        {this.state.isToggleOn && <Feedback submitReview={this.submitReview} />}
+        {this.state.isToggleOn && <Feedback submitReview={this.extractMovieInfo} />}
       </div>
     );
   }

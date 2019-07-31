@@ -7,7 +7,7 @@ class Feedback extends React.Component {
     super(props);
     this.state = {
       comment: '',
-      rating: 0,
+      rating: '0',
     };
   }
 

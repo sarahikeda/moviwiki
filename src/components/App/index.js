@@ -1,5 +1,5 @@
 import React from 'react';
-import Search from '../Search/index.js';
+import SearchContainer from '../SearchContainer/index.js';
 import FavoritesList from '../FavoritesList/index.js';
 
 import './index.scss';
@@ -7,10 +7,10 @@ import './index.scss';
 
 const App = () => {
   return (
-    <div className="app">
+    <div className="app container">
       <FavoritesList />
       <h1>moviwiki</h1>
-      <Search />
+      <SearchContainer />
     </div>
   );
 };
