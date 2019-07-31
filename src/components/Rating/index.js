@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Star from '../../assets/images/star.svg';
 
 import './index.scss';
-import Star from '../../assets/images/star.svg';
 
 class Rating extends React.Component {
 // could reuse the star component?

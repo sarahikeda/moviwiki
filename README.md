@@ -6,13 +6,13 @@ To start:
 * cd into **moviwiki**
 * run `bundle install` and `npm install`
 * run `rake db:migrate` to create tables
-* To run server, run `npm run dev` and go to `localhost:8080` to see the app.
+* To run server, run `npm run build && ruby lib/app.rb` and go to `localhost:4567` to see the app.
 
 How to use:
 
     * Click the search icon to begin!
     * Enter movie title
-    * Favorite movie if it's truly, one of your favorites.
+    * Favorite movie by clicking on the star if it's truly, one of your favorites.
     * If favorited, add comment and rate the movie.
 
 Tables:

@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import Rating from '../Rating/index.js';
 import './index.scss';
 
@@ -51,6 +53,10 @@ class Feedback extends React.Component {
       </div>
     );
   }
+};
+
+Feedback.propTypes = {
+  submitReview: PropTypes.func,
 };
 
 export default Feedback;
