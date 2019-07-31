@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+  <title>MoviWiki</title>
+</head>
+
+<body>
+  <div class="container">
+    <p class="text-right p-3"><a href="/">Home</a></p>
+    <h1 class="text-center"=>moviwiki</h1>
+
+    <h4>Your favorites</h4>
+    <ul>
+      <% favorite_movies.each do |movie| %>
+          <li><%= movie.title %></li>
+      <% end %>
+    </ul>
+  </div>
+
+</body>
+
+<script src="/bundle.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+</html>

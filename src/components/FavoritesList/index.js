@@ -4,7 +4,7 @@ import './index.scss';
 const FavoritesList = () => {
   return (
     <div className="favorites-list">
-      <a href="#">See All Favorites</a>
+      <a href="/reviews">See All Favorites</a>
     </div>
   );
 };
