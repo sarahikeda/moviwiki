@@ -21,11 +21,11 @@ post '/reviews' do
   data = JSON.parse(params.keys.first
   )
 
-  movie = Movie.create(poster: data[:moviePoster], title: data[:movieTitle], year: data[:movieYear], plot: data[:moviePlot])
+  movie = Movie.create(poster: data["moviePoster"], title: data["movieTitle"], year: data["movieYear"], plot: data["moviePlot"])
 
-  comment = Comment.create(content: data[:comment], movie_id: movie.id)
+  comment = Comment.create(content: data["comment"], movie_id: movie.id)
 
-  rating = Rating.create(rating_value: data[:rating], movie_id: movie.id)
+  rating = Rating.create(rating_value: data["rating"], movie_id: movie.id)
 
   if movie && comment && rating
     [200, {}, "Success"].to_json
@@ -38,7 +38,17 @@ end
 get '/reviews' do
   # If the movie was saved, this means it was favorited. In the future, add more sound logic for filtering results, like by user.
 
-  @movies = Movie.all
+  # list most recent movies first and just the first 10
+  movies = Movie.all.order('id DESC').limit(10)
 
-  erb :"reviews", :locals => { :favorite_movies => @movies }
+  erb :"reviews", :locals => { :favorite_movies => movies }
+end
+
+delete '/reviews/:id' do
+  movie_id = params[:id]
+
+  if movie_id
+    Comment.where(movie_id: movie_id)
+    Rating.where(movie_id: movie_id)
+  end
 end
