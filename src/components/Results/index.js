@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Star from '../Star/index.js';
-import Feedback from '../Feedback/index.js';
+import Review from '../Review/index.js';
 
 import './index.scss';
 
@@ -10,6 +10,7 @@ class Results extends React.Component {
     super(props);
     this.state = {
       isToggleOn: false,
+      isSubmitted: false,
       isStarFilled: false,
       movieTitle: '',
       moviePoster: '',
@@ -68,6 +69,7 @@ class Results extends React.Component {
       success: () => {
         this.setState({
           isToggleOn: false,
+          isSubmitted: true,
         });
       },
       error: (xhr, status, err) => {
@@ -93,7 +95,9 @@ class Results extends React.Component {
     return (
       <div className="result container">
         {result}
-        {this.state.isToggleOn && <Feedback submitReview={this.extractMovieInfo} />}
+        {this.state.isSubmitted && <p>Review submitted!</p>}
+
+        {this.state.isToggleOn && <Review submitReview={this.extractMovieInfo} />}
       </div>
     );
   }
