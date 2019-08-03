@@ -21,13 +21,18 @@ post '/reviews' do
   data = JSON.parse(params.keys.first
   )
 
-  movie = Movie.create(poster: data["moviePoster"], title: data["movieTitle"], year: data["movieYear"], plot: data["moviePlot"])
+  # checks if movie already exists in DB
+  @movie = Movie.find_by_title(data["movieTitle"])
 
-  comment = Comment.create(content: data["comment"], movie_id: movie.id)
+  if !@movie
+    @movie = Movie.create(poster: data["moviePoster"], title: data["movieTitle"], year: data["movieYear"], plot: data["moviePlot"])
+  end
 
-  rating = Rating.create(rating_value: data["rating"], movie_id: movie.id, comment_id: comment.id)
+  comment = Comment.create(content: data["comment"], movie_id: @movie.id)
 
-  if movie && comment && rating
+  rating = Rating.create(rating_value: data["rating"], movie_id: @movie.id, comment_id: comment.id)
+
+  if @movie && comment && rating
     [200, {}, "Success"].to_json
   else
     [400, {}, "Please try response again."].to_json

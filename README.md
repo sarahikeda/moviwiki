@@ -48,15 +48,13 @@ To retrieve a list of user's favorite movies, one would return a list of reviews
 
 
 To Dos:
-
-    * First check if movie title is already saved in database. If so, populate the search result (as well as the comment and review) from there, rather than calling the Omdb API.
-    * Post information to DB.
     * Retrieve information from DB, not just from omdb.
     * Return to home page after review is submitted.
     * Have info validation
         * check comment and rating are both filled out
     * User login capabilities with password
     * Add placeholder if poster doesn't exist.
-    * Keep star filled in if selected (the `onClick` event)
-    * Add feedback for when review is submitted
+    * Keep Rating star filled in if selected (the `onClick` event) so user gets feedback that their rating is received
     * Make app responsive
+    * Implement ratings and comments are associated with user, to ensure they can only leave one rating/comment per movie (pass user info when comment and rating are saved, and do a check for existing user rating before save).
+    * Associate Comment and Rating in a join table called Review, which stores both of their ids + the movie.
