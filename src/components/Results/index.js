@@ -95,7 +95,7 @@ class Results extends React.Component {
     return (
       <div className="result container">
         {result}
-        {this.state.isSubmitted && <p>Review submitted!</p>}
+        {this.state.isSubmitted && <p className="pb-4">Review submitted!</p>}
 
         {this.state.isToggleOn && <Review submitReview={this.extractMovieInfo} />}
       </div>

@@ -3,16 +3,18 @@
 
 <head>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato|Vollkorn:900i&display=swap" rel="stylesheet">
+  <link href="../../../src/components/App/index.scss" rel="stylesheet">
 
-  <title>MoviWiki</title>
+  <title>moviwiki</title>
 </head>
 
 <body>
   <div class="container">
-    <p class="text-right p-3"><a href="/">Home</a></p>
-    <h1 class="text-center"=>moviwiki</h1>
+    <p class="favorites-list p-3"><a href="/">Home</a></p>
+    <p class="heading text-left"=>moviwiki</p>
 
-    <h4>Your favorites</h4>
+    <h5>Favorites</h5>
     <div class="list-group">
       <% favorite_movies.each do |movie| %>
         <div class="row m-3">
