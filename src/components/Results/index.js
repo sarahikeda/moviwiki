@@ -31,7 +31,7 @@ class Results extends React.Component {
             src={movie.Poster}
           />
           <div>
-            <p className="title">
+            <p className="title py-3">
               {movie.Title}, {movie.Year}
               <Star toggleComments={this.toggleComments} />
             </p>

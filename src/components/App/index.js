@@ -6,7 +6,7 @@ import './index.scss';
 
 const App = () => {
   return (
-    <div className="app container pb-5">
+    <div className="app container">
       <FavoritesList />
       <p className="heading text-left mt-5">moviwiki</p>
       <SearchContainer />
