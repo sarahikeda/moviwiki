@@ -11,14 +11,24 @@ get '/' do
   render :html, :index
 end
 
+
+# TODO implement react router?
+get '/reviews' do
+  # If the movie was saved, this means it was favorited (in this MVP). In the future, add more sound logic for filtering results, like by user.
+
+  # list most recent movies first and just the first 10
+  movies = Movie.all.order('id DESC').limit(10)
+
+  erb :"reviews", :locals => { :favorite_movies => movies }
+end
+
 post '/reviews' do
-  # TO DO reorganize this code so saving of models is not in routes and extracted out
+  # TODO reorganize this code so saving of models is not in routes and extracted out
 
-  # validate params, also ensure everything is filled out
-  data = JSON.parse(params.keys.first
-  )
+  # TODO validate params, also ensure everything is filled out
+  data = JSON.parse(params.keys.first)
 
-  # checks if movie already exists in DB
+  # TODO check if movie exists pre-call to OMDB. Currently, this checks if movie already exists in DB during the post.
   @movie = Movie.find_by_title(data["movieTitle"])
 
   if !@movie
@@ -36,20 +46,11 @@ post '/reviews' do
   end
 end
 
-# To Do implement react router?
-get '/reviews' do
-  # If the movie was saved, this means it was favorited (in this MVP). In the future, add more sound logic for filtering results, like by user.
-
-  # list most recent movies first and just the first 10
-  movies = Movie.all.order('id DESC').limit(10)
-
-  erb :"reviews", :locals => { :favorite_movies => movies }
-end
-
 patch '/reviews/:id' do
   movie_id = params[:id]
-  # TODO - render React component, Feedback to show the original review
+  # TODO - render React component, Review to show the original review
   movies = Movie.all.order('id DESC').limit(10)
+
   erb :"reviews", :locals => { :favorite_movies => movies }
 end
 

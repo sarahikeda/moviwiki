@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Rating from '../Rating/index.js';
 import './index.scss';
 
-class Feedback extends React.Component {
+class Review extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -32,7 +32,7 @@ class Feedback extends React.Component {
 
   render() {
     return (
-      <div className="feedback">
+      <div className="review">
         <form
           onSubmit={this.handleSubmit}
         >
@@ -55,8 +55,8 @@ class Feedback extends React.Component {
   }
 };
 
-Feedback.propTypes = {
+Review.propTypes = {
   submitReview: PropTypes.func,
 };
 
-export default Feedback;
+export default Review;
