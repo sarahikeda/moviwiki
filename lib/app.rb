@@ -44,6 +44,13 @@ get '/reviews' do
   erb :"reviews", :locals => { :favorite_movies => movies }
 end
 
+patch '/reviews/:id' do
+  movie_id = params[:id]
+  # TODO - render React component, Feedback to show the original review
+  movies = Movie.all.order('id DESC').limit(10)
+  erb :"reviews", :locals => { :favorite_movies => movies }
+end
+
 delete '/reviews/:id' do
   movie_id = params[:id]
   # TODO - Right now this just deletes one comment/rating associated with the movie, without specifying a specific one. In the future, the Reviews view would pass a param that shows which rating is associated with the movie.
