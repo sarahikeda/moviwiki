@@ -40,7 +40,7 @@ class Feedback extends React.Component {
           <input
             className="comment"
             onChange={this.handleChange}
-            placeholder="Comment"
+            placeholder="So, what'd you think?"
             type="text"
           />
 
