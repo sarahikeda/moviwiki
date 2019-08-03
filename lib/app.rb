@@ -57,7 +57,7 @@ delete '/reviews/:id' do
   if movie_id
     Movie.find(movie_id).destroy
     comment = Comment.find_by_movie_id(movie_id)
-    # TODO return error message, refactor to avoid multiple nesting conditionals
+    # TODO return error message (pass errors to view i.e. object.errors), refactor to avoid multiple nesting conditionals
     if comment
       rating = Rating.find_by_comment_id(comment.id)
       rating.destroy if rating
