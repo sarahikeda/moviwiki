@@ -41,7 +41,6 @@ class Star extends React.Component {
         src={this.state.starImg}
       />
     );
-
   }
 };
 
