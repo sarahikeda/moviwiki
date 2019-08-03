@@ -11,9 +11,22 @@ body {
 .heading {
   font-family: 'Vollkorn', serif;
   font-size: 6em;
+
+  a {
+    color: #030e28;
+    &:hover {
+      text-decoration: none;
+      color: #030e28;
+    }
+  }
 }
 
 .list-group {
   background-color: #f6f9ff;
   border-radius: 4px;
+
+  .btn-info {
+    background-color: #030f29;
+    border-color: #030f29;
+  }
 }

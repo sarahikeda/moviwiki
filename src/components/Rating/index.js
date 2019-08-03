@@ -1,25 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Star from '../../assets/images/star.svg';
+import Star from '../Star/index.js';
 
 import './index.scss';
 
 class Rating extends React.Component {
-// could reuse the star component?
-  handleClick = (e) => {
+  retrieveRating = (e) => {
     this.props.handleClick(e.target.id);
   }
 
   formatStars = () => {
-    // iterate 5 times
+    // iterate to make 5 stars
     return Array.from([1,2,3,4,5]).map((star, index) => (
-      <img
-        alt="favorite-star"
-        className="favorite-star"
+      <Star
+        handleClickBehavior={this.retrieveRating}
         id={index}
         key={index}
-        onClick={this.handleClick}
-        src={Star}
       />
     ));
   }

@@ -21,11 +21,12 @@ class Star extends React.Component {
     });
   }
 
-  handleClick = () => {
+  handleClick = (e) => {
     this.setState({
       starImg: require('../../assets/images/filled-star.svg'),
     });
-    this.props.toggleComments();
+
+    this.props.handleClickBehavior(e);
   }
 
   render() {
@@ -33,6 +34,7 @@ class Star extends React.Component {
       <img
         alt="star icon"
         className="favorite-star"
+        id={this.props.id}
         onClick={this.handleClick}
         onMouseLeave={this.handleMouseLeave}
         onMouseOver={this.handleMouseOver}
@@ -44,7 +46,8 @@ class Star extends React.Component {
 };
 
 Star.propTypes = {
-  toggleComments: PropTypes.func,
+  handleClickBehavior: PropTypes.func,
+  id: PropTypes.string,
 };
 
 export default Star;

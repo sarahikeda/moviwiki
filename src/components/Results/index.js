@@ -33,7 +33,8 @@ class Results extends React.Component {
           <div>
             <p className="title py-3">
               {movie.Title}, {movie.Year}
-              <Star toggleComments={this.toggleComments} />
+              <Star
+                handleClickBehavior={this.toggleComments} />
             </p>
             <p className="plot">{movie.Plot}</p>
           </div>

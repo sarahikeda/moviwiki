@@ -8,7 +8,7 @@ const App = () => {
   return (
     <div className="app container">
       <FavoritesList />
-      <p className="heading text-left mt-5">moviwiki</p>
+      <p className="heading text-left mt-5"><a href="/">moviwiki</a></p>
       <SearchContainer />
     </div>
   );
