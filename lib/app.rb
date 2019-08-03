@@ -1,12 +1,9 @@
 require 'sinatra'
 require 'sinatra/activerecord'
 require 'json'
-require 'pry'
 require_relative '../lib/models'
 
 configure { set :server, :puma }
-
-set :database, "sqlite3:moviwiki.sqlite3"
 
 set :root, 'lib/app'
 
