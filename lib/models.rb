@@ -2,17 +2,20 @@ require 'active_record'
 
 # separate out models into their own files
 class Comment < ActiveRecord::Base
+  has_one :rating
+  has_one :review, through: :rating
 end
 
 class Movie < ActiveRecord::Base
 end
 
 class Rating < ActiveRecord::Base
+  belongs_to :comment
+  has_one :review
 end
 
-class CommentRatings < ActiveRecord::Base
+class Review < ActiveRecord::Base
   belongs_to :rating
-  belongs_to :comment
 end
 
 class User < ActiveRecord::Base

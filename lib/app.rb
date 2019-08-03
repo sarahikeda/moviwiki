@@ -25,7 +25,7 @@ post '/reviews' do
 
   comment = Comment.create(content: data["comment"], movie_id: movie.id)
 
-  rating = Rating.create(rating_value: data["rating"], movie_id: movie.id)
+  rating = Rating.create(rating_value: data["rating"], movie_id: movie.id, comment_id: comment.id)
 
   if movie && comment && rating
     [200, {}, "Success"].to_json
@@ -36,7 +36,7 @@ end
 
 # To Do implement react router?
 get '/reviews' do
-  # If the movie was saved, this means it was favorited. In the future, add more sound logic for filtering results, like by user.
+  # If the movie was saved, this means it was favorited (in this MVP). In the future, add more sound logic for filtering results, like by user.
 
   # list most recent movies first and just the first 10
   movies = Movie.all.order('id DESC').limit(10)
@@ -46,9 +46,17 @@ end
 
 delete '/reviews/:id' do
   movie_id = params[:id]
-
+  # TODO - Right now this just deletes one comment/rating associated with the movie, without specifying a specific one. In the future, the Reviews view would pass a param that shows which rating is associated with the movie.
   if movie_id
-    Comment.where(movie_id: movie_id)
-    Rating.where(movie_id: movie_id)
+    Movie.find(movie_id).destroy
+    comment = Comment.find_by_movie_id(movie_id)
+    # TODO return error message, refactor to avoid multiple nesting conditionals
+    if comment
+      rating = Rating.find_by_comment_id(comment.id)
+      rating.destroy if rating
+    end
   end
+
+  movies = Movie.all.order('id DESC').limit(10)
+  erb :"reviews", :locals => { :favorite_movies => movies }
 end

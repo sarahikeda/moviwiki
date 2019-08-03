@@ -10,10 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_29_220317) do
+ActiveRecord::Schema.define(version: 2019_08_03_001447) do
 
   create_table "comments", force: :cascade do |t|
-    t.integer "review_id"
     t.string "content"
     t.integer "movie_id"
   end
@@ -28,18 +27,19 @@ ActiveRecord::Schema.define(version: 2019_07_29_220317) do
   end
 
   create_table "ratings", force: :cascade do |t|
+    t.integer "comment_id"
+    t.integer "movie_id"
     t.integer "review_id"
     t.string "rating_value"
-    t.integer "movie_id"
+    t.index ["comment_id"], name: "index_ratings_on_comment_id"
+    t.index ["movie_id"], name: "index_ratings_on_movie_id"
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "movie_id"
-    t.integer "comment_id"
-    t.string "rating_id"
+    t.integer "rating_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["rating_id"], name: "index_reviews_on_rating_id"
   end
 
   create_table "users", force: :cascade do |t|
