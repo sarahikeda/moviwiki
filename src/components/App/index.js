@@ -4,12 +4,11 @@ import FavoritesList from '../FavoritesList/index.js';
 
 import './index.scss';
 
-
 const App = () => {
   return (
-    <div className="app container">
+    <div className="app container pb-5">
       <FavoritesList />
-      <h1>moviwiki</h1>
+      <p className="heading text-left mt-5">moviwiki</p>
       <SearchContainer />
     </div>
   );

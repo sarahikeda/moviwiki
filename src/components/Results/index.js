@@ -23,7 +23,7 @@ class Results extends React.Component {
     const movie = this.props.movieResults;
     // TO DO if there is no poster, put a placeholder
     return (
-      <div className="movie-result">
+      <div className="movie-result m-4 p-4">
         <div className="movie-info">
           <img
             alt="movie-poster"

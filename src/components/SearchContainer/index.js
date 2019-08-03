@@ -1,5 +1,4 @@
 import React from 'react';
-import SearchImage from '../../assets/images/search-icon.jpg';
 import SearchBar from '../SearchBar/index.js';
 import Results from '../Results/index.js';
 
@@ -11,15 +10,8 @@ class SearchContainer extends React.Component {
     this.state = {
       error: null,
       isLoaded: false,
-      isToggleOn: false,
       movieResults: [],
     };
-  }
-
-  handleClick = () => {
-    this.setState({
-      isToggleOn: !this.state.isToggleOn
-    });
   }
 
   performSearch = (query) => {
@@ -43,22 +35,10 @@ class SearchContainer extends React.Component {
       );
   }
 
-
   render() {
-    const isToggleOn = this.state.isToggleOn;
     return (
       <div>
-        {isToggleOn ?
-          <SearchBar performSearch={this.performSearch} />
-          : (
-            <img
-              alt="magnifying-glass"
-              className="search-icon"
-              onClick={this.handleClick}
-              src={SearchImage}
-            />
-          )
-        }
+        <SearchBar performSearch={this.performSearch} />
 
         <Results
           error={this.state.error}
