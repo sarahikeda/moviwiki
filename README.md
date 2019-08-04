@@ -13,6 +13,7 @@ How to use:
     * Enter movie title in search box
     * Favorite movie by clicking on the star if it's truly, one of your favorites.
     * If favorited, add comment and rate the movie.
+    * If a movie already has a review, it will display below (when you click the star) to edit.
     * To see a list of rated movies, click `Rated Movies` link up top
     * If you want to delete a listed movie, click delete or likewise, click update (which in the future, will allow for updating the review)
 
