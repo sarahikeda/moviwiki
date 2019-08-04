@@ -46,7 +46,6 @@ post '/reviews' do
 end
 
 patch '/reviews/:id' do
-
   movie_id = params[:id]
   # TODO - render React component, Review to show the original review
   movies = Movie.all.order('id DESC').limit(10)
@@ -55,7 +54,6 @@ patch '/reviews/:id' do
 end
 
 delete '/reviews/:id' do
-
   movie_id = params[:id]
   # TODO - Right now this just deletes one comment/rating associated with the movie, without specifying a specific one. In the future, a user id could be passed to specify which review.
   if movie_id

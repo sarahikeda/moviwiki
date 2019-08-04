@@ -61,24 +61,21 @@ class Results extends React.Component {
   }
 
   submitReview = () => {
-    // post rating, comment, and movie info
-    $.ajax({
-      url: '/reviews',
-      dataType: 'json',
-      type: 'POST',
-      data: JSON.stringify(this.state),
-      success: () => {
-        this.setState({
-          isToggleOn: false,
-          isSubmitted: true,
-        });
-      },
-      error: (xhr, status, err) => {
-        console.log(status);
-        console.log(err);
-        // TO DO display error to user
+    fetch('/reviews', {
+      method: 'POST',
+      body: JSON.stringify(this.state),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'multipart/form-data'
       }
-    });
+    }).then(res => res.json())
+    .then(response =>
+      this.setState({
+        isToggleOn: false,
+        isSubmitted: true,
+      })
+    )
+    .catch(error => console.error('Error:', error));
   }
 
 
@@ -96,6 +93,7 @@ class Results extends React.Component {
     return (
       <div className="result container">
         {result}
+
         {this.state.isSubmitted && <p className="pb-4">Review submitted!</p>}
 
         {this.state.isToggleOn && <Review submitReview={this.extractMovieInfo} />}
