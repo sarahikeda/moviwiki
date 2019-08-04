@@ -62,6 +62,7 @@ class Results extends React.Component {
 
   submitReview = () => {
     // post rating, comment, and movie info
+
     $.ajax({
       url: '/reviews',
       dataType: 'json',
