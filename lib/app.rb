@@ -2,7 +2,7 @@ require 'sinatra'
 require 'sinatra/activerecord'
 require 'json'
 require_relative '../lib/models'
-
+require 'pry'
 configure { set :server, :puma }
 
 set :root, 'lib/app'
@@ -29,17 +29,15 @@ post '/reviews' do
   data = JSON.parse(params.keys.first)
 
   # TODO check if movie exists pre-call to OMDB. Currently, this checks if movie already exists in DB during the post.
-  @movie = Movie.find_by_title(data["movieTitle"])
+  movie = Movie.find_by_title(data["movieTitle"])
 
-  if !@movie
-    @movie = Movie.create(poster: data["moviePoster"], title: data["movieTitle"], year: data["movieYear"], plot: data["moviePlot"])
+  if movie
+    movie = Movie.create(poster: data["moviePoster"], title: data["movieTitle"], year: data["movieYear"], plot: data["moviePlot"])
+
+    review = Review.create(comment: data["comment"], movie_id: movie.id, rating_value: data["rating"])
   end
 
-  comment = Comment.create(content: data["comment"], movie_id: @movie.id)
-
-  rating = Rating.create(rating_value: data["rating"], movie_id: @movie.id, comment_id: comment.id)
-
-  if @movie && comment && rating
+  if movie && review
     [200, {}, "Success"].to_json
   else
     [400, {}, "Please try response again."].to_json
@@ -56,15 +54,10 @@ end
 
 delete '/reviews/:id' do
   movie_id = params[:id]
-  # TODO - Right now this just deletes one comment/rating associated with the movie, without specifying a specific one. In the future, the Reviews view would pass a param that shows which rating is associated with the movie.
+  # TODO - Right now this just deletes one comment/rating associated with the movie, without specifying a specific one. In the future, a user id could be passed to specify which review.
   if movie_id
-    Movie.find(movie_id).destroy
-    comment = Comment.find_by_movie_id(movie_id)
+    Review.find_by_movie_id(movie_id)
     # TODO return error message (pass errors to view i.e. object.errors), refactor to avoid multiple nesting conditionals
-    if comment
-      rating = Rating.find_by_comment_id(comment.id)
-      rating.destroy if rating
-    end
   end
 
   movies = Movie.all.order('id DESC').limit(10)

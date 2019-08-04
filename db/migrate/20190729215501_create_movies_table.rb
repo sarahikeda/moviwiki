@@ -5,8 +5,8 @@ class CreateMoviesTable < ActiveRecord::Migration[5.2]
       t.string :title
       t.string :year
       t.string :plot
-      t.datetime :created_at
-      t.datetime :updated_at
+
+      t.timestamps
     end
   end
 end
