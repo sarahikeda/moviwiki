@@ -1,4 +1,4 @@
-**moviwiki** is a search tool to end disputes amongst movie buffs. Have a question about when 'Rocky' came out? Use **moviwiki** to search the title and then voila, a slew of trivia facts will appear.
+**moviwiki** is a search tool to end disputes amongst movie buffs. Having a feud over when 'Rocky' came out? Use **moviwiki** to search the title and then voila, a slew of trivia facts will appear.
 
 To start:
 
@@ -10,10 +10,11 @@ To start:
 
 How to use:
 
-    * Click the search icon to begin!
-    * Enter movie title
+    * Enter movie title in search box
     * Favorite movie by clicking on the star if it's truly, one of your favorites.
     * If favorited, add comment and rate the movie.
+    * To see a list of rated movies, click `Rated Movies` link up top
+    * If you want to delete a listed movie, click delete or likewise, click update (which in the future, will allow for updating the review)
 
 Tables:
 
@@ -30,21 +31,15 @@ Tables:
         - Year
         - Plot
 
-    - Reviews (joint table between user, rating, and comment)
+    - Reviews (contains rating and comment)
         - User Id
         - Movie Id
-        - Rating Id
-        - Comment Id
+        - Rating Value (number of stars)
+        - Comment (review that user has typed)
 
-    - Rating
-        - Review Id
-        - Rating Value
+To retrieve a list of rated movies, we query for the 10 most recent movies that were saved in the DB. This is not an ideal situation, but it falls under the logic that movies are saved only when a review is submitted. It's also a bit nebulous because a movie could have been previously saved from another user's review.
 
-    - Comment
-        - Review Id
-        - Content
-
-To retrieve a list of user's favorite movies, one would return a list of reviews from the specified user and use the movie id to get the movie's info.
+Ideally, to retrieve a list of user's favorite movies, one would return a list of reviews from the specified user and use the movie id to get the movie's info.
 
 
 To Dos:
@@ -56,5 +51,4 @@ To Dos:
     * Add placeholder if poster doesn't exist.
     * Keep Rating star filled in if selected (the `onClick` event) so user gets feedback that their rating is received
     * Make app responsive
-    * Implement ratings and comments are associated with user, to ensure they can only leave one rating/comment per movie (pass user info when comment and rating are saved, and do a check for existing user rating before save).
-    * Associate Comment and Rating in a join table called Review, which stores both of their ids + the movie.
+    * Associate reviews with a user, to ensure they can only leave one review per movie (pass user info when comment and rating are saved, and do a check for existing user rating before save).
