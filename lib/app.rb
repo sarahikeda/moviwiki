@@ -26,16 +26,17 @@ post '/reviews' do
   # TODO reorganize this code so saving of models is not in routes and extracted out
 
   # TODO validate params, also ensure everything is filled out
+  # TODO sanitize movie title to avoid JSON parsing error
   data = JSON.parse(params.keys.first)
 
   # TODO check if movie exists pre-call to OMDB. Currently, this checks if movie already exists in DB during the post.
   movie = Movie.find_by_title(data["movieTitle"])
 
-  if movie
+  if !movie
     movie = Movie.create(poster: data["moviePoster"], title: data["movieTitle"], year: data["movieYear"], plot: data["moviePlot"])
-
-    review = Review.create(comment: data["comment"], movie_id: movie.id, rating_value: data["rating"])
   end
+
+  review = Review.create(comment: data["comment"], movie_id: movie.id, rating_value: data["rating"])
 
   if movie && review
     [200, {}, "Success"].to_json
@@ -45,6 +46,7 @@ post '/reviews' do
 end
 
 patch '/reviews/:id' do
+
   movie_id = params[:id]
   # TODO - render React component, Review to show the original review
   movies = Movie.all.order('id DESC').limit(10)
@@ -53,13 +55,16 @@ patch '/reviews/:id' do
 end
 
 delete '/reviews/:id' do
+
   movie_id = params[:id]
   # TODO - Right now this just deletes one comment/rating associated with the movie, without specifying a specific one. In the future, a user id could be passed to specify which review.
   if movie_id
-    Review.find_by_movie_id(movie_id)
+    Movie.find(movie_id).destroy
+    Review.find_by_movie_id(movie_id).destroy
     # TODO return error message (pass errors to view i.e. object.errors), refactor to avoid multiple nesting conditionals
   end
 
   movies = Movie.all.order('id DESC').limit(10)
+
   erb :"reviews", :locals => { :favorite_movies => movies }
 end
