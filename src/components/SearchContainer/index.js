@@ -8,23 +8,40 @@ class SearchContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      comment: '',
       error: null,
       isLoaded: false,
-      movieResults: [],
+      movieResult: [],
+      rating: '',
     };
   }
 
-  performSearch = (query) => {
-    // TODO implement using ajax
-    // hide api key in env variable
-    fetch("http://www.omdbapi.com/?apikey=55662455&t=" + query)
+  checkIfMovieSaved = (movieTitle = '') => {
+    fetch("/movies/" + movieTitle, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(res => res.json())
+    .then((result) => {
+      this.setState({
+        comment: result.comment,
+        rating: result.rating_value,
+      });
+    });
+  }
+
+  performSearch = (movieTitle) => {
+    this.checkIfMovieSaved(movieTitle);
+    // TODO hide api key in env variable and omit Omdb api call if movie already exists
+    fetch("http://www.omdbapi.com/?apikey=55662455&t=" + movieTitle)
       .then(res => res.json())
       .then(
         (result) => {
           if (result.Response === 'True') {
             this.setState({
               isLoaded: true,
-              movieResults: result
+              movieResult: result
             });
           } else {
             this.setState({
@@ -41,9 +58,11 @@ class SearchContainer extends React.Component {
         <SearchBar performSearch={this.performSearch} />
 
         <Results
+          comment={this.state.comment}
           error={this.state.error}
           isLoaded={this.state.isLoaded}
-          movieResults={this.state.movieResults}
+          movieResult={this.state.movieResult}
+          rating={this.state.rating}
         />
       </div>
     );

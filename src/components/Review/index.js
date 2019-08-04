@@ -42,6 +42,7 @@ class Review extends React.Component {
             onChange={this.handleChange}
             placeholder="So, what'd you think?"
             type="text"
+            value={this.props.comment}
           />
 
           <input
@@ -56,6 +57,7 @@ class Review extends React.Component {
 };
 
 Review.propTypes = {
+  comment: PropTypes.string,
   submitReview: PropTypes.func,
 };
 

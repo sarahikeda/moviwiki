@@ -20,7 +20,7 @@ class Results extends React.Component {
   }
 
   formatResults = () => {
-    const movie = this.props.movieResults;
+    const movie = this.props.movieResult;
     // TO DO if there is no poster, put a placeholder
     return (
       <div className="movie-result m-4 p-4">
@@ -53,10 +53,10 @@ class Results extends React.Component {
     this.setState({
       comment: reviewData.comment,
       rating: reviewData.rating,
-      movieTitle: this.props.movieResults.Title,
-      moviePoster: this.props.movieResults.Poster,
-      movieYear: this.props.movieResults.Year,
-      moviePlot: this.props.movieResults.Plot
+      movieTitle: this.props.movieResult.Title,
+      moviePoster: this.props.movieResult.Poster,
+      movieYear: this.props.movieResult.Year,
+      moviePlot: this.props.movieResult.Plot
     }, () => this.submitReview());
   }
 
@@ -87,7 +87,7 @@ class Results extends React.Component {
           Oops, we've had a hiccup. {this.props.error}
         </div>
       );
-    } else if (this.props.movieResults && this.props.isLoaded) {
+    } else if (this.props.movieResult && this.props.isLoaded) {
       result = this.formatResults();
     }
     return (
@@ -96,16 +96,21 @@ class Results extends React.Component {
 
         {this.state.isSubmitted && <p className="pb-4">Review submitted!</p>}
 
-        {this.state.isToggleOn && <Review submitReview={this.extractMovieInfo} />}
+        {this.state.isToggleOn &&
+        <Review
+          comment={this.props.comment}
+          submitReview={this.extractMovieInfo}
+        />}
       </div>
     );
   }
 };
 
 Results.propTypes = {
+  comment: PropTypes.string,
   error: PropTypes.string,
   isLoaded: PropTypes.bool,
-  movieResults: PropTypes.obj,
+  movieResult: PropTypes.obj,
 };
 
 export default Results;

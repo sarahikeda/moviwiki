@@ -11,6 +11,17 @@ get '/' do
   render :html, :index
 end
 
+get '/movies/:query' do
+  # Check f movie already exists, then return review. Currently, movie will only return if it's an exact word-for-word match.
+
+  movie = Movie.where("lower(title) = ?", params["query"].downcase).first
+
+  if movie
+    return Review.find_by_movie_id(movie.id).to_json
+  end
+
+  [400, {}, "Movie hasn't been saved."].to_json
+end
 
 # TODO implement react router?
 get '/reviews' do
